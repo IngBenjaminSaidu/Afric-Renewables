@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AFRIC RENEWABLES — Clean Energy for Africa</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --sun:#F5A623;--sun-light:#FFD580;
+  --leaf:#2D7A3A;--leaf-light:#4CAF64;--leaf-deep:#1A5228;
+  --earth:#1A3320;--earth-mid:#243D2B;
+  --sky:#EDF7EF;--sky-soft:#F5FBF6;
+  --gold:#D4A017;--muted:#5A7A62;--muted-light:#8AAE94;
+  --white:#FFFFFF;--border:#DCF0E0;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--sky-soft);color:var(--earth);overflow-x:hidden;}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--sky);}
+::-webkit-scrollbar-thumb{background:var(--leaf);border-radius:3px;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 4rem;height:68px;
+  background:rgba(26,51,32,0.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  transition:all 0.3s;
+}
+nav.scrolled{background:rgba(26,51,32,0.99);height:60px;}
+.nav-logo{display:flex;align-items:center;gap:11px;text-decoration:none;}
+.nav-logo-circle{
+  width:36px;height:36px;background:var(--sun);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;animation:sun-pulse 3.5s ease-in-out infinite;
+}
+@keyframes sun-pulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(245,166,35,0.5);}
+  50%{box-shadow:0 0 0 10px rgba(245,166,35,0);}
+}
+.nav-logo-text{font-family:'Playfair Display',serif;color:#fff;font-size:1.05rem;font-weight:700;letter-spacing:1.5px;}
+.nav-logo-text em{font-style:normal;color:var(--sun);}
+.nav-links{display:flex;align-items:center;gap:2.2rem;list-style:none;}
+.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.83rem;letter-spacing:0.4px;transition:color 0.2s;}
+.nav-links a:hover{color:var(--sun);}
+.nav-cta{
+  background:var(--sun);color:var(--earth) !important;
+  padding:8px 22px;border-radius:4px;font-weight:500 !important;
+  transition:background 0.2s,transform 0.2s !important;
+}
+.nav-cta:hover{background:var(--sun-light) !important;transform:translateY(-1px);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:0 4rem;padding-top:68px;
+  background:var(--earth);
+  position:relative;overflow:hidden;
+}
+.hero-bg-lines{
+  position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(0deg,rgba(255,255,255,0.025) 0,rgba(255,255,255,0.025) 1px,transparent 1px,transparent 60px),
+    repeating-linear-gradient(90deg,rgba(255,255,255,0.025) 0,rgba(255,255,255,0.025) 1px,transparent 1px,transparent 60px);
+}
+.hero-glow{
+  position:absolute;right:-120px;top:50%;transform:translateY(-50%);
+  width:700px;height:700px;
+  background:radial-gradient(circle,rgba(76,175,100,0.12) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-glow2{
+  position:absolute;left:-80px;bottom:-100px;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(245,166,35,0.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;
+  align-items:center;max-width:1200px;margin:0 auto;width:100%;
+}
+.hero-content{animation:heroFadeUp 1s ease both;}
+@keyframes heroFadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(245,166,35,0.12);
+  border:1px solid rgba(245,166,35,0.3);
+  color:var(--sun);
+  font-size:0.73rem;letter-spacing:2.5px;text-transform:uppercase;
+  padding:7px 16px;border-radius:2px;margin-bottom:1.8rem;
+}
+.hero-eyebrow::before{content:'';width:6px;height:6px;background:var(--sun);border-radius:50%;animation:blink 1.8s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.8rem,4.5vw,4.4rem);font-weight:900;
+  color:#fff;line-height:1.08;margin-bottom:1.6rem;
+}
+.hero h1 em{font-style:normal;color:var(--sun);}
+.hero-desc{
+  color:rgba(255,255,255,0.62);font-size:1rem;line-height:1.85;
+  max-width:460px;margin-bottom:2.5rem;font-weight:300;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-sun{
+  background:var(--sun);color:var(--earth);
+  padding:13px 32px;border:none;border-radius:4px;
+  font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.9rem;
+  cursor:pointer;letter-spacing:0.3px;
+  transition:background 0.2s,transform 0.2s,box-shadow 0.2s;
+}
+.btn-sun:hover{background:var(--sun-light);transform:translateY(-2px);box-shadow:0 10px 28px rgba(245,166,35,0.35);}
+.btn-ghost{
+  background:transparent;color:#fff;
+  padding:13px 32px;border:1px solid rgba(255,255,255,0.28);border-radius:4px;
+  font-family:'DM Sans',sans-serif;font-size:0.9rem;
+  cursor:pointer;
+  transition:border-color 0.2s,background 0.2s;
+}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.06);}
+.hero-illustration{animation:heroFadeUp 1s 0.25s ease both;}
+.hero-stats-inline{
+  display:flex;gap:2.5rem;margin-top:2.8rem;
+  padding-top:2.5rem;border-top:1px solid rgba(255,255,255,0.1);
+}
+.hstat-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#fff;}
+.hstat-num span{color:var(--sun);}
+.hstat-lbl{font-size:0.72rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.8px;margin-top:2px;font-weight:300;}
+
+/* ── MARQUEE ── */
+.marquee-strip{
+  background:var(--sun);padding:14px 0;overflow:hidden;
+  border-bottom:3px solid var(--gold);
+}
+.marquee-track{
+  display:flex;gap:4rem;white-space:nowrap;
+  animation:marquee 28s linear infinite;
+}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.marquee-item{
+  font-size:0.78rem;font-weight:500;color:var(--earth);
+  letter-spacing:1.5px;text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;
+}
+.marquee-dot{width:5px;height:5px;background:var(--earth);border-radius:50%;opacity:0.4;}
+
+/* ── SECTIONS ── */
+section{padding:6rem 4rem;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-eyebrow{font-size:0.72rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--leaf);font-weight:500;margin-bottom:0.7rem;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:700;color:var(--earth);line-height:1.18;margin-bottom:1rem;}
+.section-sub{color:var(--muted);max-width:560px;line-height:1.85;font-size:0.95rem;font-weight:300;}
+
+/* ── ABOUT ── */
+#about{background:var(--white);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;margin-top:4rem;}
+.about-visual{position:relative;}
+.about-big-stat{
+  background:var(--earth);border-radius:12px;padding:3rem;
+  display:flex;flex-direction:column;gap:2rem;
+}
+.big-stat-item{border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:1.5rem;}
+.big-stat-item:last-child{border-bottom:none;padding-bottom:0;}
+.big-stat-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--sun);}
+.big-stat-desc{color:rgba(255,255,255,0.55);font-size:0.85rem;font-weight:300;line-height:1.6;margin-top:4px;}
+.about-text .section-sub{margin-bottom:2rem;}
+.value-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:1.5rem;}
+.pill{
+  background:var(--sky);color:var(--leaf-deep);
+  border:1px solid var(--border);
+  padding:7px 18px;border-radius:30px;
+  font-size:0.8rem;font-weight:500;
+}
+
+/* ── SERVICES ── */
+#services{background:var(--sky-soft);}
+.services-intro{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;flex-wrap:wrap;gap:1.5rem;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.svc-card{
+  background:var(--white);border:1px solid var(--border);border-radius:10px;
+  padding:2.2rem;position:relative;overflow:hidden;
+  transition:transform 0.32s,box-shadow 0.32s,border-color 0.32s;
+}
+.svc-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:var(--leaf);transform:scaleX(0);transition:transform 0.32s;transform-origin:left;
+}
+.svc-card:hover{transform:translateY(-5px);box-shadow:0 20px 48px rgba(45,122,58,0.11);border-color:#C8E6C9;}
+.svc-card:hover::after{transform:scaleX(1);}
+.svc-icon{
+  width:52px;height:52px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;margin-bottom:1.4rem;
+}
+.svc-icon.c1{background:#FFF8E7;}
+.svc-icon.c2{background:#E8F5EC;}
+.svc-icon.c3{background:#E3F2FD;}
+.svc-icon.c4{background:#F3E5F5;}
+.svc-icon.c5{background:#FFF3E0;}
+.svc-icon.c6{background:#E8EAF6;}
+.svc-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--earth);margin-bottom:0.6rem;}
+.svc-card p{font-size:0.83rem;color:var(--muted);line-height:1.75;font-weight:300;}
+.svc-card .svc-link{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:1.2rem;font-size:0.8rem;color:var(--leaf);font-weight:500;
+  text-decoration:none;transition:gap 0.2s;
+}
+.svc-card:hover .svc-link{gap:10px;}
+
+/* ── PROCESS ── */
+#process{background:var(--earth);}
+#process .section-eyebrow{color:var(--sun-light);}
+#process .section-title{color:#fff;}
+#process .section-sub{color:rgba(255,255,255,0.55);}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.08);margin-top:4rem;border-radius:10px;overflow:hidden;}
+.step{
+  background:var(--earth-mid);padding:2.5rem 2rem;
+  transition:background 0.3s;
+}
+.step:hover{background:#2D5035;}
+.step-num{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;color:var(--sun);opacity:0.25;line-height:1;margin-bottom:1rem;}
+.step h3{color:#fff;font-size:1rem;font-weight:500;margin-bottom:0.7rem;}
+.step p{color:rgba(255,255,255,0.45);font-size:0.8rem;line-height:1.7;font-weight:300;}
+
+/* ── PORTFOLIO ── */
+#portfolio{background:var(--white);}
+.portfolio-filter{display:flex;gap:8px;flex-wrap:wrap;margin:2rem 0 2.5rem;}
+.filt{
+  background:var(--sky);color:var(--muted);
+  border:1px solid var(--border);padding:7px 18px;
+  border-radius:30px;font-family:'DM Sans',sans-serif;
+  font-size:0.78rem;font-weight:500;cursor:pointer;
+  transition:all 0.2s;
+}
+.filt:hover,.filt.active{background:var(--leaf);color:#fff;border-color:var(--leaf);}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.port-card{
+  background:var(--sky-soft);border:1px solid var(--border);
+  border-radius:10px;overflow:hidden;
+  transition:transform 0.3s,box-shadow 0.3s;
+}
+.port-card:hover{transform:translateY(-5px);box-shadow:0 18px 42px rgba(45,122,58,0.12);}
+.port-card.hidden{display:none;}
+.port-thumb{
+  height:155px;display:flex;align-items:center;justify-content:center;
+  font-size:3rem;position:relative;
+}
+.pt-solar{background:#2D7A3A;}
+.pt-wind{background:#1A3320;}
+.pt-hybrid{background:#C8860A;}
+.pt-hydro{background:#185FA5;}
+.pt-grid{background:#6A3D1F;}
+.pt-bio{background:#3B6D11;}
+.country-tag{
+  position:absolute;top:10px;right:10px;
+  background:rgba(0,0,0,0.3);color:#fff;
+  font-size:0.68rem;padding:3px 10px;border-radius:20px;
+  letter-spacing:0.8px;text-transform:uppercase;font-weight:500;
+}
+.status-tag{
+  position:absolute;top:10px;left:10px;
+  font-size:0.67rem;padding:3px 10px;
+  border-radius:20px;font-weight:500;
+}
+.s-op{background:#4CAF64;color:#0D2B14;}
+.s-dev{background:#F5A623;color:#4A2800;}
+.s-pip{background:rgba(255,255,255,0.22);color:#fff;}
+.port-body{padding:1.4rem;}
+.port-body h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--earth);margin-bottom:0.4rem;}
+.port-body p{font-size:0.8rem;color:var(--muted);line-height:1.65;font-weight:300;margin-bottom:1rem;}
+.port-tags{display:flex;gap:8px;flex-wrap:wrap;}
+.ptag{font-size:0.7rem;background:var(--sky);color:var(--leaf);padding:3px 10px;border-radius:20px;font-weight:500;border:1px solid #C8E6C9;}
+.ptag.amber{background:#FFF8E7;color:#854F0B;border-color:#F5C870;}
+
+/* ── IMPACT ── */
+#impact{background:var(--sky-soft);}
+.impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:4rem;}
+.impact-numbers{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.impact-card{
+  background:var(--white);border:1px solid var(--border);border-radius:10px;
+  padding:1.8rem;text-align:center;
+  transition:transform 0.3s,box-shadow 0.3s;
+}
+.impact-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(45,122,58,0.1);}
+.impact-num{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:900;color:var(--leaf);}
+.impact-num span{color:var(--sun);}
+.impact-lbl{font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px;margin-top:6px;font-weight:300;}
+.sdg-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:1.5rem;}
+.sdg-pill{
+  padding:6px 14px;border-radius:4px;font-size:0.75rem;font-weight:500;
+}
+.sdg1{background:#FFF8E7;color:#854F0B;}
+.sdg2{background:#E8F5EC;color:#1A5228;}
+.sdg3{background:#E3F2FD;color:#0C447C;}
+.sdg4{background:#F3E5F5;color:#533AB7;}
+
+/* ── TEAM ── */
+#team{background:var(--white);}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3.5rem;}
+.team-card{
+  text-align:center;padding:2rem 1.5rem;
+  border:1px solid var(--border);border-radius:10px;
+  transition:transform 0.3s,box-shadow 0.3s;
+}
+.team-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(45,122,58,0.1);}
+.team-avatar{
+  width:72px;height:72px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;
+  margin:0 auto 1.2rem;
+}
+.av1{background:#E8F5EC;color:#1A5228;}
+.av2{background:#FFF8E7;color:#854F0B;}
+.av3{background:#E3F2FD;color:#0C447C;}
+.av4{background:#F3E5F5;color:#533AB7;}
+.team-card h3{font-size:0.95rem;font-weight:500;color:var(--earth);margin-bottom:4px;}
+.team-card .role{font-size:0.78rem;color:var(--muted);font-weight:300;}
+.team-card .bio{font-size:0.78rem;color:var(--muted-light);font-weight:300;line-height:1.6;margin-top:0.7rem;}
+
+/* ── PARTNERS ── */
+#partners{background:var(--sky-soft);padding:4rem;}
+.partners-inner{max-width:1200px;margin:0 auto;text-align:center;}
+.partners-label{font-size:0.72rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted-light);margin-bottom:2.5rem;font-weight:500;}
+.partners-logos{display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap;}
+.partner-logo{
+  padding:14px 28px;background:var(--white);
+  border:1px solid var(--border);border-radius:8px;
+  font-size:0.85rem;font-weight:500;color:var(--muted);
+  letter-spacing:0.5px;
+  transition:border-color 0.2s,color 0.2s;
+}
+.partner-logo:hover{border-color:var(--leaf);color:var(--leaf);}
+
+/* ── NEWS ── */
+#news{background:var(--white);}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem;}
+.news-card{
+  border:1px solid var(--border);border-radius:10px;overflow:hidden;
+  transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;
+}
+.news-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(45,122,58,0.1);}
+.news-thumb{height:140px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;}
+.nt1{background:#EDF7EF;}
+.nt2{background:#FFF8E7;}
+.nt3{background:#E3F2FD;}
+.news-body{padding:1.4rem;}
+.news-tag{font-size:0.68rem;text-transform:uppercase;letter-spacing:1px;color:var(--leaf);font-weight:500;margin-bottom:0.5rem;}
+.news-body h3{font-family:'Playfair Display',serif;font-size:0.98rem;font-weight:700;color:var(--earth);line-height:1.35;margin-bottom:0.5rem;}
+.news-body .date{font-size:0.75rem;color:var(--muted-light);font-weight:300;}
+
+/* ── CONTACT ── */
+#contact{background:var(--earth);padding:6rem 4rem;}
+#contact .section-eyebrow{color:var(--sun-light);}
+#contact .section-title{color:#fff;}
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:start;margin-top:4rem;}
+.contact-left p{color:rgba(255,255,255,0.55);font-size:0.9rem;line-height:1.85;font-weight:300;margin-bottom:2.5rem;}
+.contact-details{display:flex;flex-direction:column;gap:1.1rem;}
+.cdetail{display:flex;align-items:flex-start;gap:12px;color:rgba(255,255,255,0.7);font-size:0.85rem;font-weight:300;}
+.cdetail-icon{
+  width:36px;height:36px;background:rgba(255,255,255,0.07);
+  border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:16px;min-width:36px;
+}
+.cdetail strong{color:#fff;display:block;font-weight:500;font-size:0.82rem;margin-bottom:2px;}
+.contact-form{display:flex;flex-direction:column;gap:16px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.fg{display:flex;flex-direction:column;gap:7px;}
+.fg label{font-size:0.75rem;color:rgba(255,255,255,0.5);letter-spacing:0.5px;text-transform:uppercase;}
+.fg input,.fg select,.fg textarea{
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:5px;padding:11px 15px;
+  font-family:'DM Sans',sans-serif;font-size:0.88rem;color:#fff;
+  outline:none;transition:border-color 0.2s;
+}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,0.3);}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--sun);}
+.fg select option{background:var(--earth);color:#fff;}
+.fg textarea{resize:vertical;min-height:110px;}
+.form-btn{
+  background:var(--sun);color:var(--earth);
+  padding:14px;border:none;border-radius:5px;
+  font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.9rem;
+  cursor:pointer;letter-spacing:0.3px;
+  transition:background 0.2s,transform 0.2s;
+}
+.form-btn:hover{background:var(--sun-light);transform:translateY(-2px);}
+
+/* ── FOOTER ── */
+footer{background:#0F2218;padding:4rem 4rem 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:3.5rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.08);}
+.footer-brand-desc{color:rgba(255,255,255,0.4);font-size:0.82rem;font-weight:300;line-height:1.75;margin-top:1rem;max-width:290px;}
+.footer-col h4{color:#fff;font-size:0.78rem;letter-spacing:1.2px;text-transform:uppercase;font-weight:500;margin-bottom:1.3rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.65rem;}
+.footer-col ul a{color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.82rem;font-weight:300;transition:color 0.2s;}
+.footer-col ul a:hover{color:var(--sun);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;flex-wrap:wrap;gap:1rem;}
+.footer-bottom p{color:rgba(255,255,255,0.28);font-size:0.78rem;font-weight:300;}
+.footer-bottom span{color:var(--sun);}
+.footer-social{display:flex;gap:12px;}
+.social-btn{
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(255,255,255,0.07);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;text-decoration:none;
+  transition:background 0.2s;
+}
+.social-btn:hover{background:var(--sun);}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ── BACK TO TOP ── */
+#back-top{
+  position:fixed;bottom:2rem;right:2rem;
+  width:44px;height:44px;background:var(--leaf);
+  border-radius:50%;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;color:#fff;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.3s,transform 0.3s;
+  z-index:999;
+}
+#back-top.show{opacity:1;pointer-events:all;}
+#back-top:hover{transform:translateY(-3px);}
+
+/* ── EDIT MODE ── */
+#edit-toolbar{
+  position:fixed;top:68px;left:0;right:0;z-index:2000;
+  background:#1A3320;
+  border-bottom:2px solid var(--sun);
+  display:flex;align-items:center;gap:1rem;
+  padding:10px 2rem;
+  transform:translateY(-100%);
+  transition:transform 0.35s ease;
+  box-shadow:0 4px 20px rgba(0,0,0,0.3);
+}
+#edit-toolbar.visible{transform:translateY(0);}
+#edit-toolbar .tb-label{
+  color:var(--sun);font-size:0.75rem;letter-spacing:1.5px;
+  text-transform:uppercase;font-weight:500;margin-right:0.5rem;
+}
+.tb-btn{
+  background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.85);
+  border:1px solid rgba(255,255,255,0.15);border-radius:5px;
+  padding:7px 16px;font-family:'DM Sans',sans-serif;font-size:0.8rem;
+  cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:6px;
+}
+.tb-btn:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.35);}
+.tb-btn.save{background:var(--sun);color:var(--earth);border-color:var(--sun);font-weight:500;}
+.tb-btn.save:hover{background:var(--sun-light);}
+.tb-btn.danger{border-color:rgba(255,100,100,0.4);color:rgba(255,160,160,0.9);}
+.tb-btn.danger:hover{background:rgba(220,50,50,0.15);}
+.tb-sep{width:1px;height:22px;background:rgba(255,255,255,0.12);margin:0 4px;}
+.tb-hint{color:rgba(255,255,255,0.35);font-size:0.75rem;margin-left:auto;}
+#edit-toggle-btn{
+  position:fixed;bottom:2rem;left:2rem;z-index:999;
+  background:var(--earth);color:#fff;
+  border:1px solid rgba(255,255,255,0.2);border-radius:8px;
+  padding:10px 18px;font-family:'DM Sans',sans-serif;font-size:0.8rem;
+  cursor:pointer;display:flex;align-items:center;gap:8px;
+  transition:background 0.2s,box-shadow 0.2s;
+  box-shadow:0 4px 16px rgba(0,0,0,0.25);
+}
+#edit-toggle-btn:hover{background:#2D5035;box-shadow:0 6px 20px rgba(0,0,0,0.3);}
+#edit-toggle-btn.active{background:var(--sun);color:var(--earth);border-color:var(--sun);}
+body.edit-mode .editable{
+  outline:2px dashed rgba(245,166,35,0.5);
+  border-radius:3px;
+  cursor:text;
+  position:relative;
+  transition:outline-color 0.2s,background 0.2s;
+}
+body.edit-mode .editable:hover{
+  outline-color:var(--sun);
+  background:rgba(245,166,35,0.06);
+}
+body.edit-mode .editable:focus{
+  outline:2px solid var(--sun);
+  background:rgba(245,166,35,0.09);
+}
+.edit-saved-toast{
+  position:fixed;bottom:5rem;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--leaf);color:#fff;
+  padding:10px 24px;border-radius:8px;font-size:0.85rem;font-weight:500;
+  opacity:0;pointer-events:none;transition:all 0.35s;z-index:3000;
+}
+.edit-saved-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- BACK TO TOP -->
+<button id="back-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- EDIT TOOLBAR -->
+<div id="edit-toolbar">
+  <span class="tb-label">✏️ Edit Mode</span>
+  <div class="tb-sep"></div>
+  <button class="tb-btn" onclick="execCmd('bold')"><b>B</b> Bold</button>
+  <button class="tb-btn" onclick="execCmd('italic')"><i>I</i> Italic</button>
+  <button class="tb-btn" onclick="execCmd('underline')"><u>U</u> Under</button>
+  <div class="tb-sep"></div>
+  <button class="tb-btn" onclick="execCmd('insertUnorderedList')">• List</button>
+  <button class="tb-btn" onclick="execCmd('removeFormat')">✕ Clear</button>
+  <div class="tb-sep"></div>
+  <button class="tb-btn save" onclick="saveEdits()">💾 Save Changes</button>
+  <button class="tb-btn danger" onclick="resetEdits()">↺ Reset All</button>
+  <span class="tb-hint">Click any highlighted text on the page to edit it</span>
+</div>
+
+<!-- EDIT TOGGLE -->
+<button id="edit-toggle-btn" onclick="toggleEditMode()">✏️ Edit Website</button>
+
+<!-- TOAST -->
+<div class="edit-saved-toast" id="toast">✓ Changes saved to your browser</div>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-circle">☀️</div>
+    <div class="nav-logo-text"><em>AFRIC</em> RENEWABLES</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🌍 &nbsp; Powering West Africa's Future</div>
+      <h1>Clean Energy<br>for a <em>Brighter</em><br>Africa</h1>
+      <p class="hero-desc">AFRIC RENEWABLES designs, builds, and operates world-class solar, wind, hydro and hybrid power systems across West Africa — closing the energy gap with local expertise and global ambition.</p>
+      <div class="hero-btns">
+        <button class="btn-sun" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Our Services</button>
+        <button class="btn-ghost" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">View Portfolio</button>
+      </div>
+      <div class="hero-stats-inline">
+        <div>
+          <div class="hstat-num">190<span>+ MW</span></div>
+          <div class="hstat-lbl">Pipeline Capacity</div>
+        </div>
+        <div>
+          <div class="hstat-num">7</div>
+          <div class="hstat-lbl">Countries</div>
+        </div>
+        <div>
+          <div class="hstat-num">100<span>k+</span></div>
+          <div class="hstat-lbl">Lives Impacted</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-illustration">
+      <svg viewBox="0 0 380 360" width="380" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="190" cy="80" r="50" fill="#F5A623" opacity="0.9"/>
+        <circle cx="190" cy="80" r="62" fill="none" stroke="#F5A623" stroke-width="1.5" opacity="0.25"/>
+        <circle cx="190" cy="80" r="75" fill="none" stroke="#F5A623" stroke-width="1" opacity="0.12"/>
+        <g stroke="#F5A623" stroke-width="2.5" stroke-linecap="round" opacity="0.45">
+          <line x1="190" y1="0" x2="190" y2="9"/>
+          <line x1="238" y1="14" x2="233" y2="22"/>
+          <line x1="266" y1="52" x2="258" y2="57"/>
+          <line x1="270" y1="94" x2="261" y2="94"/>
+          <line x1="252" y1="132" x2="245" y2="126"/>
+          <line x1="142" y1="14" x2="147" y2="22"/>
+          <line x1="114" y1="52" x2="122" y2="57"/>
+          <line x1="110" y1="94" x2="119" y2="94"/>
+          <line x1="128" y1="132" x2="135" y2="126"/>
+        </g>
+        <ellipse cx="190" cy="320" rx="160" ry="20" fill="rgba(76,175,100,0.15)"/>
+        <g fill="#1A3320" stroke="#4CAF64" stroke-width="1.2">
+          <rect x="44" y="236" width="55" height="36" rx="3"/>
+          <rect x="110" y="224" width="55" height="48" rx="3"/>
+          <rect x="176" y="215" width="55" height="57" rx="3"/>
+          <rect x="242" y="224" width="55" height="48" rx="3"/>
+        </g>
+        <g fill="none" stroke="rgba(76,175,100,0.35)" stroke-width="0.8">
+          <line x1="49" y1="245" x2="95" y2="245"/><line x1="49" y1="253" x2="95" y2="253"/><line x1="49" y1="261" x2="95" y2="261"/>
+          <line x1="115" y1="233" x2="161" y2="233"/><line x1="115" y1="241" x2="161" y2="241"/><line x1="115" y1="249" x2="161" y2="249"/>
+          <line x1="181" y1="224" x2="227" y2="224"/><line x1="181" y1="232" x2="227" y2="232"/><line x1="181" y1="240" x2="227" y2="240"/>
+          <line x1="247" y1="233" x2="293" y2="233"/><line x1="247" y1="241" x2="293" y2="241"/><line x1="247" y1="249" x2="293" y2="249"/>
+        </g>
+        <g stroke="#4CAF64" stroke-width="1.5">
+          <line x1="60" y1="272" x2="60" y2="298"/>
+          <line x1="82" y1="272" x2="82" y2="298"/>
+          <line x1="127" y1="272" x2="127" y2="298"/>
+          <line x1="149" y1="272" x2="149" y2="298"/>
+          <line x1="193" y1="272" x2="193" y2="298"/>
+          <line x1="215" y1="272" x2="215" y2="298"/>
+          <line x1="259" y1="272" x2="259" y2="298"/>
+          <line x1="281" y1="272" x2="281" y2="298"/>
+        </g>
+        <line x1="320" y1="145" x2="320" y2="280" stroke="#4CAF64" stroke-width="3.5"/>
+        <g transform="translate(320,172)" stroke="#4CAF64" stroke-width="3" stroke-linecap="round">
+          <line x1="0" y1="0" x2="0" y2="-44"/>
+          <line x1="0" y1="0" x2="38" y2="22"/>
+          <line x1="0" y1="0" x2="-38" y2="22"/>
+        </g>
+        <circle cx="320" cy="172" r="6" fill="#F5A623"/>
+        <line x1="34" y1="295" x2="34" y2="240" stroke="#2D7A3A" stroke-width="2.5"/>
+        <ellipse cx="34" cy="226" rx="18" ry="25" fill="#2D7A3A"/>
+        <ellipse cx="34" cy="214" rx="13" ry="18" fill="#4CAF64"/>
+        <path d="M175 297 Q175 312 190 312 Q205 312 205 297" fill="none" stroke="#F5A623" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.55"/>
+        <circle cx="190" cy="312" r="4" fill="#F5A623" opacity="0.7"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ── MARQUEE ── -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="marquee-dot"></span>Solar Power</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Wind Energy</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Small Hydro</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Battery Storage</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Mini-Grid Development</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Energy Consulting</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Agri-Solar</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Rural Electrification</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Carbon Strategy</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Solar Power</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Wind Energy</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Small Hydro</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Battery Storage</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Mini-Grid Development</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Energy Consulting</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Agri-Solar</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Rural Electrification</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Carbon Strategy</span>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-big-stat">
+          <div class="big-stat-item">
+            <div class="big-stat-num">190+ MW</div>
+            <div class="big-stat-desc">Total clean energy pipeline across The Gambia, Sierra Leone, Liberia, and Guinea.</div>
+          </div>
+          <div class="big-stat-item">
+            <div class="big-stat-num">4 Nations</div>
+            <div class="big-stat-desc">Operating, developing and prospecting across West Africa with plans to expand into East and Central Africa from 2029.</div>
+          </div>
+          <div class="big-stat-item">
+            <div class="big-stat-num">0g CO₂</div>
+            <div class="big-stat-desc">Every kilowatt-hour we generate is 100% renewable. Zero direct emissions. Zero compromise.</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <div class="section-eyebrow">Who We Are</div>
+        <div class="section-title">Rooted in Africa.<br>Built for Africa.</div>
+        <p class="section-sub">We believe every African community deserves affordable, clean, and reliable energy. AFRIC RENEWABLES was founded to close the energy gap — not with charity, but with world-class engineering, local expertise, and a genuine long-term commitment to the continent.</p>
+        <p class="section-sub" style="margin-top:1rem;">We hire and train African engineers and technicians at every level. We design systems for Africa's unique climate, geography, and economic realities. And we stay — operating and maintaining for decades, not just building and leaving.</p>
+        <div class="value-pills">
+          <span class="pill">Local-First Hiring</span>
+          <span class="pill">Flexible Financing</span>
+          <span class="pill">Long-Term Stewardship</span>
+          <span class="pill">Environmental Integrity</span>
+          <span class="pill">Community Engagement</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services">
+  <div class="section-inner">
+    <div class="services-intro reveal">
+      <div>
+        <div class="section-eyebrow">What We Do</div>
+        <div class="section-title">End-to-End Clean<br>Energy Solutions</div>
+      </div>
+      <p class="section-sub" style="max-width:360px;">From a single rooftop installation to a 60MW wind park — we have the capability to deliver at any scale.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card reveal">
+        <div class="svc-icon c1">☀️</div>
+        <h3>Solar Power Systems</h3>
+        <p>Rooftop, ground-mounted, and agri-solar installations engineered for Africa's abundant sunshine — from The Gambia to Ivory Coast.</p>
+        <a href="#contact" class="svc-link">Enquire →</a>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon c2">🌀</div>
+        <h3>Wind Energy</h3>
+        <p>Utility-scale and community wind turbine projects. Harnessing coastal and savanna winds for reliable, low-cost generation.</p>
+        <a href="#contact" class="svc-link">Enquire →</a>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon c3">💧</div>
+        <h3>Small Hydro & Hybrid</h3>
+        <p>Run-of-river mini-hydro and solar-wind-hydro hybrid systems for year-round reliability in off-grid and peri-urban communities.</p>
+        <a href="#contact" class="svc-link">Enquire →</a>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon c4">🔋</div>
+        <h3>Battery Storage</h3>
+        <p>Grid-scale and community-level BESS solutions. Storing the sun and wind so communities have power when they need it most.</p>
+        <a href="#contact" class="svc-link">Enquire →</a>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon c5">⚡</div>
+        <h3>Mini-Grid Development</h3>
+        <p>Turnkey mini-grid projects for rural electrification. We plan, finance, build, and operate for communities of all sizes.</p>
+        <a href="#contact" class="svc-link">Enquire →</a>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon c6">📋</div>
+        <h3>Energy Consulting</h3>
+        <p>Feasibility studies, energy audits, carbon strategy, and project finance advisory for governments, NGOs, and private sector clients.</p>
+        <a href="#contact" class="svc-link">Enquire →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section id="process">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;max-width:600px;margin:0 auto 0;">
+      <div class="section-eyebrow">How We Work</div>
+      <div class="section-title">Our 4-Step Delivery Model</div>
+      <p class="section-sub" style="margin:0 auto;">From first site visit to decades of operation — here is how AFRIC RENEWABLES brings a project to life.</p>
+    </div>
+    <div class="process-steps reveal">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Assess &amp; Design</h3>
+        <p>Site surveys, resource mapping, load analysis, and system design tailored to the community's exact needs and budget.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Finance &amp; Permit</h3>
+        <p>Project finance structuring, regulatory approvals, grid connection agreements, and deep community engagement.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Build &amp; Commission</h3>
+        <p>Local procurement where possible, construction management, equipment testing, and full grid commissioning.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Operate &amp; Optimise</h3>
+        <p>Remote monitoring 24/7, preventive maintenance schedules, performance analytics, and continuous improvement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PORTFOLIO ── -->
+<section id="portfolio">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">Portfolio &amp; Flagship Projects</div>
+      <div class="section-title">Our Project Pipeline</div>
+      <p class="section-sub">Landmark clean energy installations spanning West African nations — powering homes, hospitals, schools, and businesses.</p>
+    </div>
+    <div class="portfolio-filter reveal">
+      <button class="filt active" onclick="filterPort('all',this)">All</button>
+      <button class="filt" onclick="filterPort('gambia',this)">The Gambia</button>
+      <button class="filt" onclick="filterPort('sierra-leone',this)">Sierra Leone</button>
+      <button class="filt" onclick="filterPort('liberia',this)">Liberia</button>
+      <button class="filt" onclick="filterPort('guinea',this)">Guinea</button>
+    </div>
+    <div class="portfolio-grid" id="port-grid">
+      <div class="port-card reveal" data-c="gambia">
+        <div class="port-thumb pt-solar">☀️<div class="country-tag">Gambia</div><div class="status-tag s-pip">Pipeline</div></div>
+        <div class="port-body">
+          <h3>Banjul Solar Farm</h3>
+          <p>20MW ground-mounted solar farm supplying 40,000 households in Greater Banjul, with integrated battery storage providing 4-hour backup capacity.</p>
+          <div class="port-tags"><span class="ptag">20 MW</span><span class="ptag">Solar + Storage</span><span class="ptag amber">Pipeline</span></div>
+        </div>
+      </div>
+
+
+      <div class="port-card reveal" data-c="sierra-leone">
+        <div class="port-thumb pt-hydro">💧<div class="country-tag">Sierra Leone</div><div class="status-tag s-pip">Pipeline</div></div>
+        <div class="port-body">
+          <h3>Rokel River Mini-Hydro</h3>
+          <p>12MW run-of-river mini-hydro on the Rokel River, delivering reliable baseload power to Makeni and the Northern Province.</p>
+          <div class="port-tags"><span class="ptag">12 MW</span><span class="ptag">Small Hydro</span><span class="ptag amber">Pipeline</span></div>
+        </div>
+      </div>
+      <div class="port-card reveal" data-c="liberia">
+        <div class="port-thumb pt-solar">☀️<div class="country-tag">Liberia</div><div class="status-tag s-pip">Pipeline</div></div>
+        <div class="port-body">
+          <h3>Monrovia Solar District</h3>
+          <p>30MW solar park paired with a 15MWh battery system to stabilise Liberia's national grid and reduce diesel dependency.</p>
+          <div class="port-tags"><span class="ptag">30 MW</span><span class="ptag">Solar + BESS</span><span class="ptag amber">Pipeline</span></div>
+        </div>
+      </div>
+      <div class="port-card reveal" data-c="guinea">
+        <div class="port-thumb pt-grid">🌿<div class="country-tag">Guinea</div><div class="status-tag s-pip">Pipeline</div></div>
+        <div class="port-body">
+          <h3>Conakry Agri-Solar Hub</h3>
+          <p>18MW agri-solar project combining elevated solar panels with productive farmland, powering 25,000 homes while boosting food security.</p>
+          <div class="port-tags"><span class="ptag">18 MW</span><span class="ptag">Agri-Solar</span><span class="ptag amber">2028 Pipeline</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── IMPACT ── -->
+<section id="impact">
+  <div class="section-inner">
+    <div class="impact-grid">
+      <div class="reveal">
+        <div class="section-eyebrow">Our Impact</div>
+        <div class="section-title">Numbers That<br>Matter</div>
+        <p class="section-sub">Beyond megawatts, AFRIC RENEWABLES measures success in lives changed — children studying by electric light, clinics running medical equipment, and businesses growing on reliable power.</p>
+        <div class="sdg-pills">
+          <span class="sdg-pill sdg1">SDG 7 — Affordable &amp; Clean Energy</span>
+          <span class="sdg-pill sdg2">SDG 13 — Climate Action</span>
+          <span class="sdg-pill sdg3">SDG 8 — Decent Work</span>
+          <span class="sdg-pill sdg4">SDG 17 — Partnerships</span>
+        </div>
+      </div>
+      <div class="impact-numbers reveal">
+        <div class="impact-card">
+          <div class="impact-num">190<span>+</span></div>
+          <div class="impact-lbl">MW in Pipeline</div>
+        </div>
+        <div class="impact-card">
+          <div class="impact-num">100<span>k+</span></div>
+          <div class="impact-lbl">People to be Powered</div>
+        </div>
+        <div class="impact-card">
+          <div class="impact-num">7</div>
+          <div class="impact-lbl">West African Nations</div>
+        </div>
+        <div class="impact-card">
+          <div class="impact-num">0<span>g</span></div>
+          <div class="impact-lbl">CO₂ per kWh</div>
+        </div>
+        <div class="impact-card">
+          <div class="impact-num">500<span>+</span></div>
+          <div class="impact-lbl">Local Jobs Created</div>
+        </div>
+        <div class="impact-card">
+          <div class="impact-num">28</div>
+          <div class="impact-lbl">Villages Electrified</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TEAM ── -->
+<section id="team">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-eyebrow">Our People</div>
+      <div class="section-title">Leadership Team</div>
+      <p class="section-sub" style="margin:0 auto;">African-led, globally experienced. Our founders and directors bring decades of energy, finance, and engineering expertise to the continent.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-avatar av1">BK</div>
+        <h3 class="editable" data-field="name">Benjamin Saidu Koroma</h3>
+        <div class="role editable" data-field="role">CEO &amp; Founder</div>
+        <div class="bio editable" data-field="bio">Expert in advanced energy systems and AI. Mechanical and maintenance engineer. Renewable and sustainable energy enthusiast.</div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-avatar av2">CB</div>
+        <h3 class="editable" data-field="name">Christopher Barth</h3>
+        <div class="role editable" data-field="role">Co-Founder &amp; Chief Financial Officer</div>
+        <div class="bio editable" data-field="bio">Infrastructure and finance specialist with deep experience structuring clean energy investments across African markets.</div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-avatar av3">AK</div>
+        <h3 class="editable" data-field="name">Abu Bakarr Kamara</h3>
+        <div class="role editable" data-field="role">Head of Engineering</div>
+        <div class="bio editable" data-field="bio">Renewable energy engineer with hands-on expertise delivering solar, hybrid, and mini-grid installations across West Africa.</div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-avatar av4">HT</div>
+        <h3 class="editable" data-field="name">Henry Tarawali</h3>
+        <div class="role editable" data-field="role">Head of Sustainability</div>
+        <div class="bio editable" data-field="bio">Environmental scientist and climate policy advisor, ensuring every AFRIC RENEWABLES project meets the highest ecological and social standards.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PARTNERS ── -->
+<section id="partners">
+  <div class="partners-inner">
+    <div class="partners-label reveal">Trusted Partners &amp; Affiliates</div>
+    <div class="partners-logos reveal">
+      <div class="partner-logo">ECOWAS ECREEE</div>
+      <div class="partner-logo">IRENA</div>
+      <div class="partner-logo">African Development Bank</div>
+      <div class="partner-logo">IFC</div>
+      <div class="partner-logo">UNDP Africa</div>
+      <div class="partner-logo">GIZ</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEWS ── -->
+<section id="news">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">Latest News</div>
+      <div class="section-title">Updates from the Field</div>
+    </div>
+    <div class="news-grid">
+      <div class="news-card reveal">
+        <div class="news-thumb nt1">☀️</div>
+        <div class="news-body">
+          <div class="news-tag">Project Update</div>
+          <h3>Banjul Solar Farm reaches full 20MW operational capacity ahead of schedule</h3>
+          <div class="date">May 2026</div>
+        </div>
+      </div>
+      <div class="news-card reveal">
+        <div class="news-thumb nt2">🤝</div>
+        <div class="news-body">
+          <div class="news-tag">Partnership</div>
+          <h3>AFRIC RENEWABLES signs MoU with Sierra Leone's Ministry of Energy for Rokel River scheme</h3>
+          <div class="date">April 2026</div>
+        </div>
+      </div>
+      <div class="news-card reveal">
+        <div class="news-thumb nt3">🌿</div>
+        <div class="news-body">
+          <div class="news-tag">Expansion</div>
+          <h3>Company announces Ivory Coast agri-solar campus — 50MW solar-biomass hybrid near Abidjan</h3>
+          <div class="date">March 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">Get In Touch</div>
+      <div class="section-title">Start Your Energy Journey</div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-left reveal">
+        <p>Whether you're a homeowner, a business, a local government, or an investor — our team is ready to design the right clean energy solution for your needs. Reach out today.</p>
+        <div class="contact-details">
+          <div class="cdetail">
+            <div class="cdetail-icon">✉️</div>
+            <div><strong>Email</strong>info@africrenewables.com</div>
+          </div>
+          <div class="cdetail">
+            <div class="cdetail-icon">📞</div>
+            <div><strong>Phone</strong>+220 789 0000 (Banjul HQ)</div>
+          </div>
+          <div class="cdetail">
+            <div class="cdetail-icon">📍</div>
+            <div><strong>Headquarters</strong>Atlantic Boulevard, Banjul, The Gambia</div>
+          </div>
+          <div class="cdetail">
+            <div class="cdetail-icon">🕐</div>
+            <div><strong>Hours</strong>Mon–Fri, 8:00 AM – 5:00 PM GMT</div>
+          </div>
+          <div class="cdetail">
+            <div class="cdetail-icon">🌍</div>
+            <div><strong>Regional Offices</strong>Dakar · Accra · Freetown · Monrovia</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="contact-form">
+          <div class="form-row">
+            <div class="fg"><label>First Name</label><input type="text" placeholder="Fatou"/></div>
+            <div class="fg"><label>Last Name</label><input type="text" placeholder="Jallow"/></div>
+          </div>
+          <div class="fg"><label>Email Address</label><input type="email" placeholder="you@example.com"/></div>
+          <div class="fg"><label>Organisation</label><input type="text" placeholder="Company or Institution"/></div>
+          <div class="fg">
+            <label>Enquiry Type</label>
+            <select>
+              <option value="">Select enquiry type</option>
+              <option>Residential Solar</option>
+              <option>Commercial Energy</option>
+              <option>Mini-Grid Project</option>
+              <option>Investment Partnership</option>
+              <option>Government / NGO</option>
+              <option>General Enquiry</option>
+            </select>
+          </div>
+          <div class="fg"><label>Message</label><textarea placeholder="Tell us about your energy needs or project…"></textarea></div>
+          <button class="form-btn" onclick="this.textContent='Message Sent ✓';this.style.background='#4CAF64';this.disabled=true;">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:34px;height:34px;background:var(--sun);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;">☀️</div>
+          <div style="font-family:'Playfair Display',serif;color:#fff;font-size:1rem;font-weight:700;letter-spacing:1.5px;"><span style="color:var(--sun);">AFRIC</span> RENEWABLES</div>
+        </div>
+        <p class="footer-brand-desc">Harnessing Africa's natural abundance — sun, wind, and water — to power a clean, prosperous future for every community on the continent.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Solar Power Systems</a></li>
+          <li><a href="#services">Wind Energy</a></li>
+          <li><a href="#services">Battery Storage</a></li>
+          <li><a href="#services">Mini-Grid Development</a></li>
+          <li><a href="#services">Energy Consulting</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#portfolio">Projects</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#contact">Careers</a></li>
+          <li><a href="#contact">Investors</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Markets</h4>
+        <ul>
+          <li><a href="#portfolio">The Gambia</a></li>
+          <li><a href="#portfolio">Sierra Leone</a></li>
+          <li><a href="#portfolio">Liberia</a></li>
+          <li><a href="#portfolio">Guinea</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <span>AFRIC RENEWABLES</span>. All rights reserved. Registered in The Gambia.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
+        <a class="social-btn" href="#" aria-label="Twitter">𝕏</a>
+        <a class="social-btn" href="#" aria-label="Facebook">f</a>
+      </div>
+      <p>Built for Africa. <span>Powered by the Sun.</span></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+const backTop = document.getElementById('back-top');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+  backTop.classList.toggle('show', window.scrollY > 400);
+});
+
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 90);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+function filterPort(c, btn) {
+  document.querySelectorAll('.filt').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.port-card').forEach(card => {
+    card.classList.toggle('hidden', c !== 'all' && card.dataset.c !== c);
+  });
+}
+
+/* ── EDIT MODE SYSTEM ── */
+let editMode = false;
+const STORAGE_KEY = 'afric_renewables_edits';
+
+function getAllEditables() {
+  return document.querySelectorAll('.editable');
+}
+
+function toggleEditMode() {
+  editMode = !editMode;
+  const body = document.body;
+  const toolbar = document.getElementById('edit-toolbar');
+  const toggleBtn = document.getElementById('edit-toggle-btn');
+  body.classList.toggle('edit-mode', editMode);
+  toolbar.classList.toggle('visible', editMode);
+  toggleBtn.classList.toggle('active', editMode);
+  toggleBtn.textContent = editMode ? '✓ Done Editing' : '✏️ Edit Website';
+  getAllEditables().forEach(el => {
+    el.contentEditable = editMode ? 'true' : 'false';
+  });
+  if (editMode) {
+    document.getElementById('nav').style.top = '42px';
+  } else {
+    document.getElementById('nav').style.top = '0';
+  }
+}
+
+function execCmd(cmd) {
+  document.execCommand(cmd, false, null);
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+function saveEdits() {
+  const saved = {};
+  getAllEditables().forEach((el, i) => {
+    const key = el.dataset.editKey || (el.dataset.editKey = 'edit_' + i);
+    saved[key] = el.innerHTML;
+  });
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+    showToast('✓ Changes saved to your browser');
+  } catch(e) {
+    showToast('⚠ Could not save — copy the file to enable local storage');
+  }
+}
+
+function resetEdits() {
+  if (!confirm('Reset all edits back to the original content?')) return;
+  try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+  showToast('↺ Changes reset — reload the page to restore originals');
+  setTimeout(() => location.reload(), 1500);
+}
+
+function loadSavedEdits() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const saved = JSON.parse(raw);
+    getAllEditables().forEach((el, i) => {
+      const key = el.dataset.editKey || (el.dataset.editKey = 'edit_' + i);
+      if (saved[key] !== undefined) el.innerHTML = saved[key];
+    });
+  } catch(e) {}
+}
+
+/* Auto-assign edit keys and make key sections editable on page load */
+document.addEventListener('DOMContentLoaded', () => {
+  /* Mark additional elements as editable beyond team cards */
+  const extraSelectors = [
+    '.section-title', '.section-sub', '.section-eyebrow',
+    '.hero h1', '.hero-desc',
+    '.svc-card h3', '.svc-card p',
+    '.step h3', '.step p',
+    '.port-body h3', '.port-body p',
+    '.news-body h3',
+    '.about-big-stat .big-stat-num', '.about-big-stat .big-stat-desc',
+    '.impact-lbl', '.impact-num',
+    'footer .footer-brand-desc',
+    '.cdetail div',
+    '.hstat-num', '.hstat-lbl',
+    '.marquee-item'
+  ];
+  extraSelectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => {
+      if (!el.classList.contains('editable')) el.classList.add('editable');
+    });
+  });
+  getAllEditables().forEach((el, i) => {
+    el.dataset.editKey = 'edit_' + i;
+    el.contentEditable = 'false';
+    el.setAttribute('spellcheck', 'true');
+  });
+  loadSavedEdits();
+});
+</script>
+</body>
+</html>
